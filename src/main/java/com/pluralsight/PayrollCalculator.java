@@ -32,7 +32,7 @@ public class PayrollCalculator {
             pay = 40 * ratePerHour;
             System.out.println("You worked overtime!");
             System.out.println("You get paid time and a half for the extra hours.");
-            System.out.printf("Hello %s your pay is $%.2f .",
+            System.out.printf("Hello %s your pay is $%.2f",
                     userName,
                     pay + overtimePay
             );
