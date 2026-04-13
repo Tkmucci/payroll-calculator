@@ -4,43 +4,59 @@ import java.util.Scanner;
 
 public class PayrollCalculator {
 
+    static String userName;
+    static double hoursWorked;
+    static double ratePerHour;
+    static double pay;
+    static double overtimePay;
+    static Scanner userInput = new Scanner(System.in);
+
+
     public static void main(String[] args) {
 
+        System.out.println("===Welcome to the Payroll Calculator!===");
+        printPayrollDetails();
+        hours();
+
+    }
+
+    public static void printPayrollDetails() {
 
         //Scanner to ask for userName
-        Scanner theScanner = new Scanner(System.in);
         System.out.print("Enter your name: ");
-        String userName = theScanner.nextLine();
+        userName = userInput.nextLine();
 
         //Ask for hours worked
-        System.out.print("Enter the number of hours worked: ");
-        int hoursWorked = theScanner.nextInt();
+        System.out.print("\nEnter the number of hours worked: ");
+        hoursWorked = userInput.nextInt();
 
         //Ask for rate per hour
         System.out.print("Enter the rate per hour: $");
-        double ratePerHour = theScanner.nextDouble();
+        ratePerHour = userInput.nextDouble();
 
-        //Calculate pay
-        double pay = hoursWorked * ratePerHour;
+        System.out.printf("Hello %s .\n",
+                userName
+        );
+    }
+    public static void printOvertimePay() {
 
         //overtime pay calculation
-        double overtimePay = (hoursWorked - 40) * (ratePerHour * 1.5);
+        overtimePay = (hoursWorked - 40) * (ratePerHour * 1.5);
+        pay = 40 * ratePerHour;
+        System.out.println("You worked overtime!");
+        System.out.println("You get paid time and a half for the extra hours.");
+        System.out.printf("Your pay is $%.2f\n",
+                pay + overtimePay
+        );
 
-        //Display username and pay
-        //If statement for overtime
+    }
+    public static void hours() {
         if (hoursWorked > 40) {
-            pay = 40 * ratePerHour;
-            System.out.println("You worked overtime!");
-            System.out.println("You get paid time and a half for the extra hours.");
-            System.out.printf("Hello %s your pay is $%.2f",
-                    userName,
-                    pay + overtimePay
-            );
+            printOvertimePay();
         }
         else {
-
-            System.out.printf("Hello %s your pay is $%.2f .",
-                    userName,
+            pay = hoursWorked * ratePerHour;
+            System.out.printf("Your pay is $%.2f\n",
                     pay
             );
         }
