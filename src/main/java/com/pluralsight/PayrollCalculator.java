@@ -50,15 +50,21 @@ public class PayrollCalculator {
         );
 
     }
+
+    public static void regularPay() {
+
+        pay = hoursWorked * ratePerHour;
+        System.out.printf("Your pay is $%.2f\n",
+                pay
+        );
+
+    }
     public static void hours() {
         if (hoursWorked > 40) {
             printOvertimePay();
         }
         else {
-            pay = hoursWorked * ratePerHour;
-            System.out.printf("Your pay is $%.2f\n",
-                    pay
-            );
+            regularPay();
         }
     }
 }
